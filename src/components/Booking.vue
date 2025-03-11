@@ -42,7 +42,7 @@
 
       <div class="mb-3">
         <label for="name" class="form-label">Név</label>
-        <input v-model="name" type="text" class="form-control" id="name" placeholder="pl: Varga Irény" required />
+        <input v-model="name" type="text" class="form-control" id="name" placeholder="pl: Changbin Salon" required />
       </div>
 
       <div class="mb-3">
@@ -74,18 +74,27 @@ const name = ref("");
 const phone = ref("");
 const service = ref("Pszichológus");
 const time = ref("08:00");
+const bookedAppointments = ref([]);
+
 
 const bookAppointment = () => {
-  if (!name.value || !phone.value) {
+  if (!name.value || !phone.value || !service.value || !time.value) {
     alert("Kérlek, töltsd ki az összes mezőt!");
     return;
   }
-  console.log(`Foglalás sikeres: Név - ${name.value}, Telefonszám - ${phone.value}`);
+  console.log(`Foglalás sikeres: Név - ${name.value}, Telefonszám - ${phone.value} Szolgáltatás - ${service.value}, Időpont - ${time.value}`);
 
   const toastEl = document.getElementById("liveToast");
   const toast = new Toast(toastEl);
   toast.show();
 };
+
+const appointment = `${day.value} ${time.value}`;
+if (bookedAppointments.value.includes(appointment)) {
+  alert("Ez az időpont már foglalt, kérlek válassz másikat!");
+  return;
+}
+bookedAppointments.value.push(appointment);
 </script>
 
 <style scoped>
