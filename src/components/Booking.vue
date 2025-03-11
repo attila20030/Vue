@@ -14,6 +14,19 @@
         <option>Hivatali ügyintézés</option>
       </select>
 
+
+      <label class="idopont">Kérem válassza ki a napot:</label>
+      <select v-model="time" class="form-select mb-3">
+        <option>Hétfő</option>
+        <option>Kedd</option>
+        <option>Szerda</option>
+        <option>Csütörtök</option>
+        <option>Péntek</option>
+        <option>Szombat</option>
+        <option>Vasárnap</option>
+      </select>
+
+
       <label class="idopont">Kérem válassza ki az időpontot:</label>
       <select v-model="time" class="form-select mb-3">
         <option>08:00</option>
